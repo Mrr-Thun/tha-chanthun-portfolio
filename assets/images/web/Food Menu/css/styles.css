@@ -1,0 +1,40 @@
+@charset="UTF-8"
+html {
+  font-size: 100%;
+}
+img {
+  max-width: 100%;
+}
+ul {
+  list-style: none;
+display: flex;
+}
+a{
+text-decoration: none;
+}
+
+body {
+  text-align: center;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer p {
+  text-align: center;
+}
+
+#text{
+margin: 60px;
+}
+.view a {
+ border: solid 1px #000000;
+ padding: 20px 60px;
+
+}
+.view {
+margin: 50px;
+}

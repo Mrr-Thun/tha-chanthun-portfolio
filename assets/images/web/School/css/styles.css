@@ -1,0 +1,255 @@
+@charset "UTF-8";
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: #fafafa;
+}
+
+/* ---------- Header ---------- */
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#header .logo img {
+  width: 120px;
+}
+
+#header ul {
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+#header a {
+  color: #2b2b8c;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+#header a:hover, #header a.active {
+  color: #0066ff;
+}
+
+.lang select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* ---------- Hero Section ---------- */
+#hero {
+  position: relative;
+  text-align: center;
+}
+
+#hero img {
+  width: 100%;
+  border-radius: 0;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-text .btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #0066ff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-text .btn:hover {
+  background: #004ecc;
+}
+
+/* ---------- Concept Section ---------- */
+#concept {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 10%;
+  flex-wrap: wrap;
+  background: #fff;
+}
+
+#concept img {
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.concept-text {
+  max-width: 600px;
+  text-align: left;
+}
+
+.concept-text h2 {
+  color: #1c1c80;
+}
+
+/* ---------- Recommended Schools ---------- */
+#reco {
+  background: #f8f9fc;
+  padding: 60px 10%;
+}
+
+.section-title {
+  text-align: center;
+  color: #1c1c80;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.school-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.card {
+  width: 300px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin: 15px 0 10px;
+  color: #2b2b8c;
+}
+
+/* ---------- Message Section ---------- */
+#message {
+  padding: 60px 10%;
+  background: #ffffff;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.message-content img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.message-content .text {
+  max-width: 400px;
+  text-align: left;
+}
+
+/* ---------- Footer ---------- */
+#footer {
+  background: #1c1c80;
+  color: #fff;
+  padding: 30px 20px;
+}
+
+#footer ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+#footer a {
+  color: #fff;
+  transition: color 0.3s;
+}
+
+#footer a:hover {
+  color: #00c3ff;
+}
+
+#footer p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  #header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #concept {
+    flex-direction: column;
+  }
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ---------- Social Icons ---------- */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.social-icons a {
+  color: #ffffff;
+  font-size: 1.8rem;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #00c3ff;
+  transform: scale(1.2);
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Summer Break</title>
+  <style>
+    /* 1. Base Reset (Cleans up default browser spacing) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+img {
+
+  max-width: 100%;
+
+  vertical-align: bottom;
+
+}
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      color: #333;
+      background-color: #f4f7f6; /* Soft, modern background color */
+      line-height: 1.8;
+    }
+
+    /* 2. Container (Keeps everything centered and stops it from getting too wide) */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 3. Header Styling */
+    header {
+      background-color: #ffffff;
+      padding: 20px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    header h1 a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    /* 4. The "Card" Layout (Fixes the overlapping issue) */
+    .card {
+      display: flex;
+      background-color: #ffffff;
+      border-radius: 12px; /* Rounded corners */
+      overflow: hidden; /* Keeps the image inside the rounded corners */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Soft shadow */
+      margin-bottom: 50px;
+      align-items: center; /* Centers items vertically */
+    }
+
+    /* Flips the layout so the image is on the right for Kobe */
+    .card.reverse {
+      flex-direction: row-reverse;
+    }
+
+    /* Forces the image and text to take up exactly 50% of the space each */
+    .card-image, .card-text {
+      width: 50%;
+      flex-shrink: 0;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 400px; /* Locks the height so both cards match */
+      object-fit: cover; /* Crops the image nicely instead of stretching it */
+      display: block;
+    }
+
+    .card-text {
+      padding: 40px;
+    }
+
+    .card-text h2 {
+      color: #e74c3c; /* A nice coral/red accent color */
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    .card-text h3 {
+      font-size: 16px;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+    }
+
+    /* 5. Mobile Responsiveness (Stacks them neatly on phones) */
+    @media (max-width: 768px) {
+      .card, .card.reverse {
+        flex-direction: column;
+      }
+      .card-image, .card-text {
+        width: 100%;
+      }
+      .card-image img {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="mainvisual">
+    <img src="img/summer banner.png" alt="Summer Banner">
+  </div>
+  <header>
+    <div class="container">
+      <h1><a href="#">楽しい夏休み</a></h1>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="card">
+      <div class="card-image">
+        <img src="img/Expo.jpg" alt="Osaka Expo 2025">
+      </div>
+      <div class="card-text">
+        <h2>OSAKA</h2>
+        <h3>OSAKA EXPO 2025ーばんばく</h3>
+        <p>グランドリングを歩くし、いろいろな国の文化を見ました。ドローン＆プロジェクションマッピングショー、花火＆セレブレーション日没後には、ドローンアニメーションとプロジェクションマッピングが融合した演出が楽しめます。「One World, One Planet（ひとつの世界、ひとつの地球）」といったテーマの物語が視覚的に表現され、観客を魅了します。さらに、季節ごとの花火イベントが夜空を彩り、記憶に残るひとときを演出します。</p>
+      </div>
+    </section>
+
+    <section class="card reverse">
+      <div class="card-image">
+        <img src="img/Kobe.jpg" alt="Kobe Beach">
+      </div>
+      <div class="card-text">
+        <h2>KOBE</h2>
+        <h3>Beyond Kobe</h3>
+        <p>林崎松江海岸（はやしざきまつえかいがん）：電車でアクセスできる静かなビーチで、遠浅の海、バーベキュー設備、シャワーなどが整っており、のんびりとした雰囲気が魅力です。家族連れや静かに過ごしたい日に最適です。</p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>វិទ្យាល័យរស្មីសាមគ្គី</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a3d62;
+            --secondary: #3c6382;
+            --accent: #f39c12;
+            --accent-hover: #e67e22;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 61, 98, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo-area h1 { color: var(--white); font-size: 1.4rem; font-weight: 700; }
+        .logo-area p { color: var(--accent); font-size: 0.9rem; letter-spacing: 0.5px; }
+
+        .nav-links { list-style: none; display: flex; gap: 25px; }
+        .nav-links a { 
+            color: var(--white); 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 1rem;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(10, 61, 98, 0.6), rgba(0, 0, 0, 0.7)), url('img/img1.jpg') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h2 { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 800px; color: #dfe6e9; margin-bottom: 40px; }
+
+        .btn {
+            background: var(--accent);
+            padding: 16px 35px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(243, 156, 18, 0.3);
+        }
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(243, 156, 18, 0.4);
+        }
+
+        /* Sections */
+        section { padding: 100px 8%; }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title h2 { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
+        .section-title hr { width: 60px; border: 2px solid var(--accent); margin: 0 auto; }
+
+        /* About Section */
+        .about-content ul { list-style: none; margin: 15px 0; }
+        .about-content li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        .about-content li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .about-content h4 { color: var(--secondary); font-size: 1.2rem; margin-top: 15px; margin-bottom: 5px; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; align-items: flex-start; }
+        .about-img { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0px var(--light-bg), 21px 21px 0px var(--accent); }
+
+        /* Academic Cards */
+        .card {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+        .card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--accent); opacity: 0; transition: 0.3s; }
+        .card:hover::after { opacity: 1; }
+
+        /* Teacher Cards */
+        .teacher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
+        .teacher-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #f1f1f1;
+            transition: 0.3s;
+            box-shadow: var(--shadow);
+        }
+        .teacher-card.admin {
+            grid-column: 1 / -1;
+            max-width: 400px;
+            margin: 0 auto 20px;
+            border: 2px solid var(--accent);
+        }
+        .teacher-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .teacher-card img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent); margin-bottom: 15px; }
+        .teacher-card h4 { font-size: 1.2rem; color: var(--primary); margin-bottom: 5px; }
+        .teacher-card span { color: var(--accent); font-weight: 600; display: block; font-size: 0.95rem; }
+
+        /* Gallery */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-item { border-radius: 15px; overflow: hidden; height: 250px; box-shadow: var(--shadow); }
+        .gallery img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .gallery-item:hover img { transform: scale(1.05) rotate(1deg); }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 8% 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+        }
+        .footer-links li { list-style: none; margin-bottom: 12px; }
+        .footer-links a { color: #bdc3c7; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent); padding-left: 8px; }
+        
+        .footer-bottom {
+            background: #072d4a;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav { padding: 15px 5%; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px);
+                background: var(--primary); flex-direction: column; align-items: center; 
+                padding-top: 50px; transition: 0.4s;
+            }
+            .nav-links.active { left: 0; }
+            section { padding: 80px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-area">
+            <h1>វិទ្យាល័យរស្មីសាមគ្គី</h1>
+            <p>អនាគតចាប់ផ្តើមនៅទីនេះ</p>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" onclick="toggleMenu()">ទំព័រដើម</a></li>
+            <li><a href="#about" onclick="toggleMenu()">អំពីយើង</a></li>
+            <li><a href="#academics" onclick="toggleMenu()">កម្មវិធីសិក្សា</a></li>
+            <li><a href="#teachers" onclick="toggleMenu()">បុគ្គលិកសិក្សា</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">កម្រងរូបភាព</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">ទំនាក់ទំនង</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h2>អនាគតចាប់ផ្តើមនៅទីនេះ</h2>
+        <p>ផ្តល់ចំណេះដឹង និងសីលធម៌ដល់សិស្សានុសិស្សតាំងពីឆ្នាំ១៩៧៩។ ស្ថិតនៅចំកណ្តាលស្រុកពាមជរ យើងប្តេជ្ញាឆ្ពោះទៅរកឧត្តមភាពនៃការសិក្សា។</p>
+        <a href="#academics" class="btn">ស្វែងយល់ពីកម្មវិធីសិក្សារបស់យើង</a>
+    </section>
+
+    <section id="about">
+        <div class="section-title">
+            <h2>អំពីសាលារបស់យើង</h2>
+            <p style="color: var(--accent); font-weight: 600;">បង្កើតឡើងតាំងពីឆ្នាំ ១៩៧៩</p>
+            <hr>
+        </div>
+        <div class="grid-2">
+            <div>
+                <img src="img/img2.jpg" alt="រូបភាពសាលា" class="about-img">
+            </div>
+            <div class="about-content">
+                <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 1.6rem;">ចក្ខុវិស័យ និងបេសកកម្ម</h3>
+                
+                <h4>ចក្ខុវិស័យ</h4>
+                <p>សាលាមានបំណងអភិវឌ្ឍសិស្សឲ្យមានចំណេះដឹង សមត្ថភាព វិន័យ សីលធម៌ និងជំនាញជីវិត ដើម្បីក្លាយជាពលរដ្ឋល្អ មានទំនួលខុសត្រូវចំពោះសង្គម និងរួមចំណែកអភិវឌ្ឍប្រទេសជាតិ។</p>
+                
+                <h4>បេសកកម្ម</h4>
+                <ul>
+                    <li>ផ្តល់ការអប់រំដែលមានគុណភាព និងសមភាពសម្រាប់សិស្សទាំងអស់។</li>
+                    <li>លើកកម្ពស់ការបង្រៀន និងការសិក្សាដោយប្រើវិធីសាស្ត្រដែលមានប្រសិទ្ធភាព។</li>
+                    <li>បណ្តុះបណ្តាលសិស្សឲ្យមានសីលធម៌ វិន័យ និងអាកប្បកិរិយាល្អ។</li>
+                    <li>អភិវឌ្ឍសមត្ថភាពសិស្សក្នុងការគិតវិភាគ ការច្នៃប្រឌិត និងការដោះស្រាយបញ្ហា។</li>
+                    <li>សហការជាមួយមាតាបិតា អាជ្ញាធរ និងសហគមន៍ក្នុងការកែលម្អគុណភាពអប់រំ។</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="academics" style="background: var(--light-bg);">
+        <div class="section-title">
+            <h2>កម្មវិធីសិក្សា</h2>
+            <hr>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">១. ថ្នាក់វិទ្យាសាស្រ្តពិត</h3>
+                <p>កម្មវិធីសិក្សាផ្តោតស៊ីជម្រៅលើមុខវិជ្ជា រូបវិទ្យា គីមីវិទ្យា ជីវវិទ្យា និងគណិតវិទ្យាកម្រិតខ្ពស់ សម្រាប់សិស្សានុសិស្សដែលមានគោលដៅចង់ក្លាយជាវិស្វករ និងវេជ្ជបណ្ឌិត។</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">២. ថ្នាក់វិទ្យាសាស្រ្តសង្គម</h3>
+                <p>កម្មវិធីសិក្សាផ្តោតទូលំទូលាយលើមុខវិជ្ជា ប្រវត្តិវិទ្យា ភូមិវិទ្យា និងសេដ្ឋកិច្ច សម្រាប់សិស្សានុសិស្សដែលមានបំណងចង់ក្លាយជាអ្នកដឹកនាំផ្នែកច្បាប់ និងធុរកិច្ច។</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="teachers">
+        <div class="section-title">
+            <h2>ថ្នាក់ដឹកនាំ និងបុគ្គលិកសិក្សា</h2>
+            <hr>
+        </div>
+
+        <div class="teacher-card admin">
+            <img src="img/chhem.jpg" alt="នាយកសាលា" onerror="this.src='https://via.placeholder.com/130'">
+            <h4>លោកគ្រូ ឆែម ឈៀង</h4>
+            <span>នាយកសាលា</span>
+        </div>
+
+        <div class="teacher-card admin" style="border-color: var(--secondary);">
+            <img src="img/ven.jpg" alt="អនុប្រធាន" onerror="this.src='https://via.placeholder.com/130'">
+            <h4>លោកគ្រូ ប៉ែន សុភ័ន</h4>
+            <span>អនុប្រធាន</span>
+        </div>
+
+        <div class="teacher-grid" style="margin-top: 50px;">
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ កែន សុខវីរៈ</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>អ្នកគ្រូ សម្បត្តិ ដានី</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ ទុំ វណ្ណា</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>អ្នកគ្រូ ពៅ ស៊ីថា</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/thoun.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ អំ ធួន</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/work.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ សឿន វើក</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ ម៉ន សុផល</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ សុន សាវង្ស</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ សាម រតនៈ</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>អ្នកគ្រូ សែម វណ្ណី</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/tc2.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>អ្នកគ្រូ ឡាង មយូរ៉ា</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ គង់ សុភា</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/tc1.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ ម៉ម នេង</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ អុន គីមសៀ</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+            <div class="teacher-card">
+                <img src="img/teacher.jpg" alt="គ្រូបង្រៀន" onerror="this.src='https://via.placeholder.com/130'">
+                <h4>លោកគ្រូ ស៊ាន រ៉ាវី</h4>
+                <span>គ្រូបង្រៀន</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" style="background: var(--light-bg);">
+        <div class="section-title">
+            <h2>កម្រងរូបភាពជីវិតនៅក្នុងសាលា</h2>
+            <hr>
+        </div>
+        <div class="gallery">
+            <div class="gallery-item"><img src="img/img5.jpg" alt="រូបភាព" onerror="this.src='https://via.placeholder.com/400x300'"></div>
+            <div class="gallery-item"><img src="img/img6.jpg" alt="រូបភាព" onerror="this.src='https://via.placeholder.com/400x300'"></div>
+            <div class="gallery-item"><img src="img/img7.jpg" alt="រូបភាព" onerror="this.src='https://via.placeholder.com/400x300'"></div>
+            <div class="gallery-item"><img src="img/img8.jpg" alt="រូបភាព" onerror="this.src='https://via.placeholder.com/400x300'"></div>
+            <div class="gallery-item"><img src="img/img9.jpg" alt="រូបភាព" onerror="this.src='https://via.placeholder.com/400x300'"></div>
+            <div class="gallery-item"><img src="img/img10.jpg" alt="រូបភាព" onerror="this.src='https://via.placeholder.com/400x300'"></div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div>
+            <h2>ទាក់ទងមកយើង</h2>
+            <p>📍 ស្រុកពាមជរ ខេត្តព្រៃវែង ប្រទេសកម្ពុជា</p>
+            <p>📞 +៨៥៥ ១២ ៣៤៥ ៦៧៨</p>
+            <p>📧 info@rasmeysamaki.edu.kh</p>
+        </div>
+        <div>
+            <h3>តំណភ្ជាប់រហ័ស</h3>
+            <ul class="footer-links">
+                <li><a href="#home">ទំព័រដើម</a></li>
+                <li><a href="#">កាលវិភាគប្រឡង</a></li>
+                <li><a href="#">ប្រតិទិនសាលា</a></li>
+                <li><a href="#">ការចុះឈ្មោះចូលរៀន</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>បណ្តាញសង្គម</h3>
+            <p>សូមតាមដានទំព័រហ្វេសប៊ុកផ្លូវការរបស់យើងសម្រាប់ព័ត៌មានថ្មីៗ និងព័ត៌មានសាលា។</p>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        &copy; ២០២៦ វិទ្យាល័យរស្មីសាមគ្គី។ ការអប់រំប្រកបដោយវិជ្ជាជីវៈសម្រាប់អនាគតដ៏ភ្លឺស្វាង។
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+body {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+#countdown {
+  display: flex;
+  gap: 20px;
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.time-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 100px;
+}
+
+.label {
+  font-size: 0.5em;
+  margin-top: 10px;
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  background: #ff9800;
+  color: #fff;
+}
+
+button:hover {
+  background: #e68900;
+}
+
+#customInput {
+  margin-top: 20px;
+  display: none;
+}
+
+input {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1em;
+}
+
+#fireworksCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+  z-index: 9999;
+}

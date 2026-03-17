@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+/* ---------- Base Styles ---------- */
+html {
+  font-size: 100%;
+  font-family: Meiryo, "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  background-color: #fff;
+  color: #222;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+/* ---------- Header ---------- */
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+#header h1 a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1c1c80;
+}
+
+/* ---------- Main Visual ---------- */
+#mainvisual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Concept & Work Sections ---------- */
+#concept,
+#work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 40px auto;
+  flex-wrap: wrap; /* make responsive */
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+#concept img,
+#work img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.text1,
+.text2 {
+  max-width: 700px;
+  text-align: left;
+}
+
+.text1 h2,
+.text2 h2 {
+  color: red;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* ---------- About Section ---------- */
+#about {
+  margin: 60px auto;
+  text-align: center;
+}
+
+#about .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+#about img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+#about .text {
+  max-width: 500px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* ---------- Footer ---------- */
+#footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding: 20px 0;
+  background-color: #f1f1f1;
+  margin-top: 50px;
+}
+
+/* ---------- Responsive Design ---------- */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  #concept img,
+  #work img {
+    max-width: 350px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #header {
+    flex-direction: column;
+  }
+
+  #concept,
+  #work {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text1,
+  .text2 {
+    text-align: center;
+  }
+
+  #about .content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #about .text {
+    text-align: center;
+  }
+
+  #concept img,
+  #work img {
+    max-width: 100%;
+  }
+}
+
+/* ---------- Footer ---------- */
+#footer {
+  margin-top: 50px;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+#footer ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+#footer li {
+  margin: 5px 15px;
+}
+
+footer p {
+  font-size: 10px;
+  color: #666;
+}

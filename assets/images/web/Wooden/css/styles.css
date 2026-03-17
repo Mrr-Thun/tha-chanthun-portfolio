@@ -1,0 +1,79 @@
+@charset="UTF-8"
+html {
+  font-size: 100%;
+}
+ #header {
+display: flex;
+justify-content: left;
+align-items: center;
+}
+
+
+li{
+ list-style: none;
+}
+#header ul {
+display: flex;
+}
+#header li{
+margin-left: 30px;
+}
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+a {
+text-decoration: none;
+}
+
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  padding: 20px 0;
+}
+
+
+#work img{
+width:1 500px;
+height: 500px;
+margin-left: 20px;
+}
+
+#concept img{
+width:1 500px;
+height: 500px;
+margin-left: 250px;
+margin-bottom: 60px;
+}
+#concept {
+display: flex;
+align-items: center;
+}
+#work {
+display: flex;
+align-items: center;
+}
+.text2 {
+margin: 30px;
+}
+.text1 {
+margin: 30px;
+}
+
+#header img{
+width: 150px;
+}
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Kiwi Maru', serif;
+}
+@media screen and (min-width:768px) {
+.img {
+width:50%;
+}
+}
