@@ -1,0 +1,825 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+/* ====== ROOT VARIABLES (Unified Theme) ====== */
+:root {
+  --main-font: "Poppins", sans-serif;
+  --secondary-font: "Nunito", sans-serif;
+  
+  --primary: #ff7a18;
+  --primary-dark: #e66a10;
+  --secondary: #2506ad;
+  --secondary-dark: #1a047e;
+  
+  --text-main: #1a1a1a;
+  --text-muted: #555555;
+  --bg-light: #f4f5f7;
+  --bg-white: #ffffff;
+  
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+:lang(ja) {
+  --main-font: "Noto Sans JP", sans-serif;
+  --secondary-font: "Noto Sans JP", sans-serif;
+}
+}
+
+:lang(km) {
+  --main-font: "Kantumruy Pro", sans-serif;
+  --secondary-font: "Kantumruy Pro", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Logo font*/
+header .logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.2rem; /* Increased size because script fonts naturally look smaller */
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+}
+
+header .logo i {
+  font-family: "Font Awesome 5 Free"; /* Keeps your video icon working */
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-right: 0.8rem;
+}
+
+body {
+  background: var(--bg-light);
+  font-family: var(--main-font);
+  color: var(--text-main);
+}
+
+*::selection {
+  background: var(--primary);
+  color: var(--bg-white);
+}
+
+/* ====== REUSABLE CLASSES ====== */
+section {
+  min-height: 100vh;
+  padding: 8rem 9%;
+}
+
+.heading {
+  font-size: 3.5rem;
+  color: var(--text-main);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: capitalize;
+}
+
+.heading span {
+  color: var(--primary);
+}
+
+.qoute {
+  font-size: 1.6rem;
+  text-align: center;
+  font-family: var(--secondary-font);
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 4rem;
+}
+
+/* ====== NAVBAR ====== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9%;
+  height: 7rem;
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+}
+
+header .logo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+header .logo i {
+  color: var(--primary);
+  margin-right: 0.5rem;
+}
+
+header .navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+header .navbar li {
+  margin-left: 2.5rem;
+}
+
+header .navbar ul li a {
+  font-size: 1.5rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+header .navbar ul li a:hover {
+  color: var(--primary);
+}
+
+#menu {
+  font-size: 2.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* ====== HERO SECTION ====== */
+.home {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding-top: 10rem;
+}
+
+.home .content {
+  flex: 1 1 40rem;
+}
+
+.home .image {
+  flex: 1 1 40rem;
+  text-align: center;
+}
+
+.home .image img {
+  width: 70%;
+  max-width: 700px;
+  border-radius: 30%;
+  box-shadow: var(--shadow-md);
+}
+
+.home .content h2 {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.home .content h2 span {
+  color: var(--primary);
+}
+
+.home .content p {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 1.5rem 0;
+}
+
+.home .content p span {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  border-radius: 4rem;
+  color: var(--bg-white);
+  background: var(--secondary);
+  font-size: 1.6rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  margin-top: 1rem;
+}
+
+.btn i {
+  margin-left: 0.5rem;
+}
+
+.btn:hover {
+  background: var(--secondary-dark);
+  transform: translateY(-3px);
+}
+
+.socials {
+  margin-top: 4rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: var(--bg-white);
+  color: var(--text-main);
+  font-size: 2rem;
+  margin-right: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.social-icons a:hover {
+  background: var(--primary);
+  color: var(--bg-white);
+  transform: translateY(-3px);
+}
+
+/* ====== ABOUT SECTION ====== */
+.about {
+  background: var(--bg-white);
+}
+
+.about .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about .row .image {
+  flex: 1 1 40rem;
+}
+
+.about .row .image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+}
+
+.about .row .content {
+  flex: 1 1 45rem;
+}
+
+.about .row .content h3 {
+  font-size: 3rem;
+}
+
+.about .row .content .tag {
+  font-size: 1.6rem;
+  color: var(--primary);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.about .row .content p {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.about .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.about .box p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about .box p span {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* ====== SKILLS SECTION ====== */
+.skills {
+  background: var(--secondary);
+  padding: 6rem 0;
+}
+
+/* Heading */
+.skills .heading {
+  color: var(--bg-white);
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.skills .heading span {
+  color: var(--primary);
+}
+
+/* Container */
+.skills .container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  max-width: 900px;
+  margin: auto;
+}
+
+/* ===== GRID 3x3 ===== */
+.skills .container .row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+/* Skill Card */
+.skills .bar {
+  background: var(--bg-white);
+  padding: 3rem 2rem;
+  border-radius: 1.2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover */
+.skills .bar:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* Skill Icon */
+.skills .skill-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.skills .bar:hover .skill-icon {
+  transform: scale(1.1);
+}
+
+/* Skill Text */
+.skills .bar span {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 900px) {
+  .skills .container .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .skills .container .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====== EDUCATION SECTION ====== */
+.education .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.education .box {
+  background: var(--bg-white);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.education .box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.education .box .image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.education .box .content {
+  padding: 2rem;
+}
+
+.education .box .content h3 {
+  font-size: 2rem;
+  color: var(--text-main);
+}
+
+.education .box .content h4 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin: 1rem 0;
+}
+
+.education .box .content p {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+
+/* ====== SHORT COURSE GRID ====== */
+.shortcourse-timeline{
+  display:grid;
+  background:rgb(235, 235, 235);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap:3rem;
+  width:100%;
+}
+
+/* Make the heading span across the entire top of the grid */
+.shortcourse-timeline .heading {
+  grid-column: 1 / -1; 
+  margin-bottom: 2rem;
+}
+
+/* Remove the old timeline vertical line and dots */
+.shortcourse-timeline::before,
+.sc-item::before {
+  display: none; 
+}
+
+/* ====== CARD CONTAINER ====== */
+.sc-item {
+  background: var(--bg-white);
+  border-radius: 1.5rem;
+  overflow: hidden; /* Keeps the image inside the rounded corners */
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  padding-left: 0; /* Overrides the old timeline padding */
+  margin-bottom: 0; /* Overrides the old timeline margin */
+  height: 100%; /* Makes all cards in a row the same height */
+  transition: all 0.3s ease;
+}
+
+.sc-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ====== IMAGE THUMBNAIL ====== */
+.sc-item .image {
+  width: 100%;
+  height: 300px; /* Locked height for uniformity */
+  margin-bottom: 0;
+  border-radius: 0; /* Removing old radius since the parent container handles it */
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.sc-item .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sc-item:hover .image img {
+  transform: scale(1.08); 
+}
+
+/* ====== DATE PILL BADGE ====== */
+.sc-date {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: var(--secondary-font);
+  background: rgba(255, 122, 24, 0.1); 
+  color: var(--primary);
+  padding: 0.5rem 1.5rem;
+  border-radius: 3rem;
+  margin: 2rem 2rem 0 2rem; /* Spacing inside the card */
+  align-self: flex-start; /* Keeps the pill from stretching across the card */
+}
+
+/* ====== CONTENT TEXT ====== */
+.sc-content {
+  padding: 1.5rem 2rem 2.5rem 2rem;
+  background: transparent;
+  box-shadow: none; /* Removed because the parent card has the shadow */
+  border: none;
+  flex-grow: 1; /* Pushes text up and stretches the container perfectly */
+}
+
+.sc-content h3 {
+  font-size: 2rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.sc-content h4 {
+  font-size: 1.4rem;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.sc-content p {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ====== RESPONSIVE GRID OVERRIDES ====== */
+@media (max-width: 450px) {
+  .shortcourse-timeline {
+    grid-template-columns: 1fr; /* Forces 1 column on very small phones */
+  }
+}
+
+/* ====== EXPERIENCE TIMELINE ====== */
+.experience .timeline {
+
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.experience .timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: var(--secondary);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.experience .container {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+}
+
+.experience .left { left: 0; }
+.experience .right { left: 50%; }
+
+.experience .container::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  background-color: var(--bg-white);
+  border: 4px solid var(--primary);
+  top: 25px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.experience .right::after {
+  left: -10px;
+}
+
+.experience .content {
+  padding: 2rem;
+  background: var(--bg-white);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.experience .content h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+.experience .content h3 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1rem; }
+.experience .content p { font-size: 1.4rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ====== FOOTER ====== */
+.footer {
+  background: var(--text-main);
+  padding: 6rem 9% 2rem;
+}
+
+.footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer .box h3 {
+  font-size: 2.2rem;
+  color: var(--bg-white);
+  margin-bottom: 2rem;
+}
+
+.footer .box p, .footer .box a {
+  font-size: 1.5rem;
+  color: #ccc;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.footer .box a:hover {
+  color: var(--primary);
+  padding-left: 1rem;
+}
+
+.footer .box i {
+  color: var(--primary);
+  margin-right: 1rem;
+}
+
+.footer .credit {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ccc;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer .credit a {
+  color: var(--primary);
+}
+
+/* ====== MOBILE RESPONSIVENESS ====== */
+@media (max-width: 991px) {
+  html { font-size: 55%; }
+  section { padding: 6rem 5%; }
+}
+
+@media (max-width: 768px) {
+  /* Navbar */
+  #menu { display: block; }
+  header .navbar {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--bg-white);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Hidden */
+  }
+  header .navbar.nav-toggle {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Revealed */
+  }
+  header .navbar ul {
+    flex-direction: column;
+    padding: 2rem;
+  }
+  header .navbar ul li {
+    margin: 1.5rem 0;
+  }
+  
+  /* Hero */
+  .home { padding-top: 12rem; text-align: center; }
+  .home .image img { width: 80%; margin: 0 auto; }
+  .socials { justify-content: center; display: flex; }
+
+  /* Experience Timeline Flat Layout for Mobile */
+  .experience .timeline::after { left: 20px; }
+  .experience .container { width: 100%; padding-left: 50px; padding-right: 0; }
+  .experience .right { left: 0; }
+  .experience .container::after { left: 10px; right: auto; }
+}
+
+@media (max-width: 450px) {
+  html { font-size: 50%; }
+  .home .content h2 { font-size: 3.5rem; }
+  .skills .container { padding: 2rem; }
+}
+
+
+
+/* ====== My Project ====== */
+/* ====== WEB DESIGN LIST GALLERY ====== */
+.web-design-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; 
+  padding: 12rem 9% 8rem;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+/* ====== INDIVIDUAL PROJECT CARD ====== */
+.list-card {
+  display: flex;
+  align-items: center; 
+  background: #f2f2f2; 
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  gap: 4rem; 
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Hover Effect */
+.list-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-white); 
+}
+
+/* ====== CARD IMAGE ====== */
+.card-image {
+  flex: 0 0 400px; 
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: #fff; 
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.list-card:hover .card-image img {
+  transform: scale(1.05); 
+}
+
+/* ====== CARD TEXT CONTENT ====== */
+.card-content {
+  flex: 1; 
+  text-align: left;
+}
+
+.card-content h3 {
+  font-size: 2.2rem;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.card-content p {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ====== MOBILE RESPONSIVENESS ====== */
+@media (max-width: 991px) {
+  .list-card {
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+  .card-image {
+    flex: 0 0 300px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .web-design-list {
+    padding: 10rem 5% 6rem;
+  }
+  .list-card {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+  .card-image {
+    flex: auto;
+    width: 100%; 
+  }
+}
+
+/* ====== ACTIVE NAVBAR LINK ====== */
+header .navbar ul li a.active {
+  color: var(--primary); /* Changes the text to your orange theme color */
+  font-weight: 700; /* Makes it slightly bolder than the other links */
+  position: relative;
+}
+
+/* Creates a smooth underline for the active link */
+header .navbar ul li a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Positions the line just below the text */
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+/* Optional: Make regular links have a hover effect that matches */
+header .navbar ul li a:hover {
+  color: var(--primary);
+}
+

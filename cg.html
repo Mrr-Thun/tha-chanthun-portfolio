@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link id='favicon' rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-png">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <title>My Project - Videos</title>
+    <style>
+        /* --- Base page styling --- */
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: var(--bg-light, #f4f5f7); 
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* --- The Masonry Container --- */
+.masonry-gallery {
+    column-count: 3; 
+    column-gap: 20px; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    padding: 12rem 5% 4rem; /* Pushes gallery below your fixed header */
+}
+
+/* --- Video Styling --- */
+.masonry-gallery video {
+    width: 100%; 
+    display: block;
+    margin-bottom: 20px; 
+    border-radius: 12px; 
+    break-inside: avoid; 
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease; 
+    background-color: #000; 
+}
+
+.masonry-gallery video:hover {
+    filter: brightness(1.1); 
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- Split-Screen Lightbox Styles (Premium Dark Mode) --- */
+#split-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 10, 15, 0.98); 
+    z-index: 2000;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#split-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-left {
+    flex: 7.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.lightbox-left video {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    outline: none;
+    background-color: #000;
+}
+
+.lightbox-right {
+    flex: 2.5;
+    padding: 30px 20px;
+    overflow-y: auto;
+    background-color: #1a1a24;
+    border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Custom Scrollbar */
+.lightbox-right::-webkit-scrollbar { width: 8px; }
+.lightbox-right::-webkit-scrollbar-track { background: transparent; }
+.lightbox-right::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+
+.masonry-gallery-small {
+    column-count: 2;
+    column-gap: 12px;
+}
+
+.masonry-gallery-small video {
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.5; 
+    transition: all 0.3s ease;
+    background-color: #000;
+    border: 2px solid transparent;
+}
+
+.masonry-gallery-small video:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* Highlights the currently playing thumbnail */
+.masonry-gallery-small video.active-thumb {
+    opacity: 1;
+    border-color: #ff7a18; 
+}
+
+#close-btn {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 1001;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#close-btn:hover {
+    background: #ff7a18;
+    border-color: #ff7a18;
+    transform: scale(1.05);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+    .masonry-gallery { column-count: 2; }
+    .lightbox-left { flex: 6; }
+    .lightbox-right { flex: 4; }
+}
+
+@media (max-width: 768px) {
+    .masonry-gallery { column-count: 1; column-gap: 15px; padding-top: 10rem; } 
+    #split-lightbox { flex-direction: column; }
+    .lightbox-left { flex: 1; padding: 80px 20px 20px; }
+    .lightbox-left video { max-height: 50vh; }
+    .lightbox-right { flex: 1; border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+    .masonry-gallery-small { column-count: 3; }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><i class="fas fa-video"></i> Tha Chanthun</a>
+        <div id="menu" class="fas fa-bars"></div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="project.html">Graphic Design</a></li>
+                <li><a href="video.html">Video/Graphic Motion</a></li>
+                <li><a href="web.html">Website</a></li>
+                <li><a class="active" href="cg.html">CG.Game</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="split-lightbox" class="lightbox-hidden">
+        <button id="close-btn">✕ Close</button>
+        <div class="lightbox-left">
+            <video id="big-video" src="" controls autoplay></video>
+        </div>
+        <div class="lightbox-right">
+            <div id="thumbnail-grid" class="masonry-gallery-small"></div>
+        </div>
+    </div>
+
+    <div class="masonry-gallery">
+            <video src="assets/images/3D/maya1.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya2.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya3.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya4.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya5.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya6.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya7.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya8.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya9.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya10.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya11.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya12.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya13.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya14.mp4" loop muted playsinline preload="metadata"></video>
+            <video src="assets/images/3D/maya15.mp4" loop muted playsinline preload="metadata"></video>
+    </div>
+
+    <script>
+        const galleryVideos = document.querySelectorAll('.masonry-gallery video');
+const lightbox = document.getElementById('split-lightbox');
+const bigVideo = document.getElementById('big-video');
+const thumbnailGrid = document.getElementById('thumbnail-grid');
+const closeBtn = document.getElementById('close-btn');
+
+// 1. Observer for the main background grid
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3 
+};
+
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.play().catch(e => console.log("Play prevented by browser:", e));
+        } else {
+            entry.target.pause();
+        }
+    });
+}, observerOptions);
+
+// 2. Set up the videos and sidebar clones
+galleryVideos.forEach((vid, index) => {
+    // Observe the main grid video
+    videoObserver.observe(vid);
+
+    // Clone for the sidebar
+    let clone = vid.cloneNode(true);
+    clone.removeAttribute('autoplay');
+    clone.pause(); // Force pause to save CPU power
+    
+    // Handle clicking a sidebar thumbnail
+    clone.addEventListener('click', () => {
+        bigVideo.src = clone.src; 
+        bigVideo.play(); 
+        updateActiveThumbnail(index);
+    });
+    
+    thumbnailGrid.appendChild(clone);
+});
+
+const thumbnails = document.querySelectorAll('.masonry-gallery-small video');
+
+// Update which sidebar thumbnail is highlighted
+function updateActiveThumbnail(activeIndex) {
+    thumbnails.forEach((thumb, index) => {
+        if (index === activeIndex) {
+            thumb.classList.add('active-thumb');
+            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            thumb.classList.remove('active-thumb');
+        }
+    });
+}
+
+// 3. Open lightbox when a main grid video is clicked
+galleryVideos.forEach((vid, index) => {
+    vid.addEventListener('click', () => {
+        bigVideo.src = vid.src;
+        updateActiveThumbnail(index);
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        bigVideo.play(); 
+    });
+});
+
+// 4. Close lightbox safely
+closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    bigVideo.pause(); 
+    bigVideo.src = ""; 
+});
+    </script>
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Tha Chanthun's Portfolio</h3>
+                <p>Thank you for visiting my personal portfolio. <br/> <br/> Keep Creating!</p>
+            </div>
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="project.html"><i class="fas fa-chevron-circle-right"></i> Graphic Design</a>
+                <a href="#"><i class="fas fa-chevron-circle-right"></i> Video/Graphic Motion</a>
+                <a href="web.html"><i class="fas fa-chevron-circle-right"></i> Website</a>
+                <a href="cg.html"><i class="fas fa-chevron-circle-right"></i> CG.Game</a>
+            </div>
+            <div class="box">
+                <h3>contact info</h3>
+                <p> <i class="fas fa-phone"></i>070 4784 7073</p>
+                <p> <i class="fas fa-envelope"></i>tha.chanthun@gmail.com</p>
+                <p> <i class="fas fa-map-marked-alt"></i>Nishiimagawa Higashisumiyoshi Osaka, Japan</p>
+                <div class="share">
+                    <a href="https://www.facebook.com/mynameisthachanthun" class="fab fa-facebook" aria-label="Facebook" target="_blank"></a>
+                    <a href="https://www.instagram.com/mrr__thun/" class="fab fa-instagram" aria-label="Instagram" target="_blank"></a>
+                    <a href="https://www.threads.net/@mrr__thun" class="fas fa-at" aria-label="Threads" target="_blank"></a>
+                    <a href="https://x.com/mrr_thun99" class="fab fa-twitter" aria-label="X (Twitter)" target="_blank"></a>
+                    <a href="https://t.me/Mrr_Thun" class="fab fa-telegram-plane" aria-label="Telegram" target="_blank"></a>
+                    <a href="https://line.me/ti/p/Ka3a58TD2D" class="fab fa-line" aria-label="Line" target="_blank"></a>
+                    <a href="https://www.tiktok.com/@mrr_thun?_r=1&_t=ZS-93krOEqpBAG" class="fab fa-tiktok" aria-label="TikTok" target="_blank"></a>
+                    <a href="https://www.behance.net/mrrthun" class="fab fa-behance" aria-label="Behance" target="_blank"></a>
+                    <a href="mailto:tha.chanthun@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <h1 class="credit">Designed by <a href="#"> Tha Chanthun</a></h1>
+    </section>
+
+    <a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
+</body>
+</html>

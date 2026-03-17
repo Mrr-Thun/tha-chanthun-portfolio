@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link id='favicon' rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-png">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <title>My Project</title>
+    <style>
+    /* --- The Masonry Container --- */
+.masonry-gallery {
+    /* Set to 4 columns. 6 is too crowded for standard desktop screens */
+    column-count: 4; 
+    column-gap: 20px; 
+    max-width: 1400px;
+    margin: 0 auto;
+    /* 10rem top padding prevents the gallery from hiding behind your fixed header */
+    padding: 12rem 5% 4rem; 
+}
+
+/* --- Image Styling --- */
+.masonry-gallery img {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    break-inside: avoid;
+    cursor: zoom-in;
+    box-shadow: var(--shadow-sm, 0px 4px 10px rgba(0,0,0,0.05));
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Hover Effect --- */
+.masonry-gallery img:hover {
+    filter: brightness(0.9);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md, 0px 10px 20px rgba(0,0,0,0.15));
+}
+
+/* --- Split-Screen Lightbox Styles (Premium Dark Mode) --- */
+#split-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 10, 15, 0.98); /* Deep sleek dark background */
+    z-index: 2000; /* Higher than your header */
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#split-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-left {
+    flex: 7.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.lightbox-left img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.lightbox-right {
+    flex: 2.5;
+    padding: 30px 20px;
+    overflow-y: auto;
+    background-color: #1a1a24; /* Slightly lighter dark panel for contrast */
+    border-left: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Custom Scrollbar for the right panel */
+.lightbox-right::-webkit-scrollbar { width: 8px; }
+.lightbox-right::-webkit-scrollbar-track { background: transparent; }
+.lightbox-right::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+
+.masonry-gallery-small {
+    column-count: 2;
+    column-gap: 12px;
+}
+
+.masonry-gallery-small img {
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.5; /* Dims thumbnails */
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.masonry-gallery-small img:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* Highlights the thumbnail you are currently viewing */
+.masonry-gallery-small img.active-thumb {
+    opacity: 1;
+    border-color: #ff7a18; /* Your primary orange color */
+}
+
+#close-btn {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 1001;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#close-btn:hover {
+    background: #ff7a18;
+    border-color: #ff7a18;
+    transform: scale(1.05);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+    .masonry-gallery { column-count: 3; }
+    .lightbox-left { flex: 6; }
+    .lightbox-right { flex: 4; }
+}
+
+@media (max-width: 768px) {
+    .masonry-gallery { column-count: 2; column-gap: 15px; padding-top: 10rem; }
+    #split-lightbox { flex-direction: column; }
+    .lightbox-left { flex: 1; padding: 80px 20px 20px; }
+    .lightbox-left img { max-height: 50vh; }
+    .lightbox-right { flex: 1; border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+    .masonry-gallery-small { column-count: 3; }
+}
+
+@media (max-width: 480px) {
+    .masonry-gallery { column-count: 1; }
+}
+    </style>
+</head>
+<body>
+<header>
+    <a href="index.html" class="logo"><i class="fas fa-video"></i> Tha Chanthun</a>
+    <div id="menu" class="fas fa-bars"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a class="active" href="project.html">Graphic Design</a></li>
+            <li><a href="video.html">Video/Graphic Motion</a></li>
+            <li><a href="web.html">Website</a></li>
+            <li><a href="cg.html">CG.Game</a></li>
+        </ul>
+    </nav>
+</header>
+    <div id="split-lightbox" class="lightbox-hidden">
+        <button id="close-btn">✕ Close</button>
+        <div class="lightbox-left">
+            <img id="big-image" src="" alt="Large view">
+        </div>
+        <div class="lightbox-right">
+            <div id="thumbnail-grid" class="masonry-gallery-small"></div>
+        </div>
+    </div>
+    <div class="masonry-gallery">
+        <img src="assets/images/project/Img1.jpg" alt="img1">
+        <img src="assets/images/project/Img2.jpg" alt="img2">
+        <img src="assets/images/project/Img3.jpg" alt="img3">
+        <img src="assets/images/project/Img4.jpg" alt="img4">
+        <img src="assets/images/project/Img5.jpg" alt="img5">
+        <img src="assets/images/project/Img6.jpg" alt="img6">
+        <img src="assets/images/project/Img7.jpg" alt="img7">
+        <img src="assets/images/project/Img8.jpg" alt="img8">
+        <img src="assets/images/project/Img9.jpg" alt="img9">
+        <img src="assets/images/project/Img10.jpg" alt="img10">
+        <img src="assets/images/project/Img11.jpg" alt="img11">
+        <img src="assets/images/project/Img12.jpg" alt="img12">
+        <img src="assets/images/project/Img13.jpg" alt="img13">
+        <img src="assets/images/project/Img14.jpg" alt="img14">
+        <img src="assets/images/project/Img15.jpg" alt="img15">
+        <img src="assets/images/project/Img16.jpg" alt="img16">
+        <img src="assets/images/project/Img17.jpg" alt="img17">
+        <img src="assets/images/project/Img18.jpg" alt="img18">
+        <img src="assets/images/project/Img19.jpg" alt="img19">
+        <img src="assets/images/project/Img20.jpg" alt="img20">
+        <img src="assets/images/project/Img21.jpg" alt="img21">
+        <img src="assets/images/project/Img22.jpg" alt="img22">
+        <img src="assets/images/project/Img23.jpg" alt="img23">
+        <img src="assets/images/project/Img24.jpg" alt="img24">
+        <img src="assets/images/project/Img25.jpg" alt="img25">
+        <img src="assets/images/project/Img26.jpg" alt="img26">
+        <img src="assets/images/project/Img27.jpg" alt="img27">
+        <img src="assets/images/project/Img28.jpg" alt="img28">
+        <img src="assets/images/project/Img29.jpg" alt="img29">
+        <img src="assets/images/project/Img30.jpg" alt="img30">
+        <img src="assets/images/project/Img31.jpg" alt="img31">
+        <img src="assets/images/project/Img32.jpg" alt="img32">
+        <img src="assets/images/project/Img33.jpg" alt="img33">
+        <img src="assets/images/project/Img34.jpg" alt="img34">
+        <img src="assets/images/project/Img35.jpg" alt="img35">
+        <img src="assets/images/project/Img36.jpg" alt="img36">
+        <img src="assets/images/project/Img37.jpg" alt="img37">
+        <img src="assets/images/project/Img38.jpg" alt="img38">
+        <img src="assets/images/project/Img39.jpg" alt="img39">
+        <img src="assets/images/project/Img40.jpg" alt="img40">
+        <img src="assets/images/project/Img41.jpg" alt="img41">
+        <img src="assets/images/project/Img42.jpg" alt="img42">
+        <img src="assets/images/project/Img43.jpg" alt="img43">
+        <img src="assets/images/project/Img44.jpg" alt="img44">
+        <img src="assets/images/project/Img45.jpg" alt="img45">
+        <img src="assets/images/project/Img46.jpg" alt="img46">
+        <img src="assets/images/project/Img47.jpg" alt="img47">
+        <img src="assets/images/project/Img48.jpg" alt="img48">
+        <img src="assets/images/project/Img49.jpg" alt="img49">
+        <img src="assets/images/project/Img50.jpg" alt="img50">
+        <img src="assets/images/project/Img51.jpg" alt="img51">
+        <img src="assets/images/project/Img52.jpg" alt="img52">
+        <img src="assets/images/project/Img53.jpg" alt="img53">
+        <img src="assets/images/project/Img54.jpg" alt="img54">
+        <img src="assets/images/project/Img55.jpg" alt="img55">
+        <img src="assets/images/project/Img56.jpg" alt="img56">
+        <img src="assets/images/project/Img57.jpg" alt="img57">
+        <img src="assets/images/project/Img58.jpg" alt="img58">
+        <img src="assets/images/project/Img59.jpg" alt="img59">
+        <img src="assets/images/project/Img60.jpg" alt="img60">
+        <img src="assets/images/project/Img61.jpg" alt="img61">
+        <img src="assets/images/project/Img62.jpg" alt="img62">
+        <img src="assets/images/project/Img63.jpg" alt="img63">
+        <img src="assets/images/project/Img64.jpg" alt="img64">
+        <img src="assets/images/project/Img65.jpg" alt="img65">
+        <img src="assets/images/project/Img66.jpg" alt="img66">
+        <img src="assets/images/project/Img67.jpg" alt="img67">
+        <img src="assets/images/project/Img68.jpg" alt="img68">
+        <img src="assets/images/project/Img69.jpg" alt="img69">
+        <img src="assets/images/project/Img70.jpg" alt="img70">
+        <img src="assets/images/project/Img71.jpg" alt="img71">
+        <img src="assets/images/project/Img72.jpg" alt="img72">
+        <img src="assets/images/project/Img73.jpg" alt="img73">
+        <img src="assets/images/project/Img74.jpg" alt="img74">
+        <img src="assets/images/project/Img75.jpg" alt="img75">
+        <img src="assets/images/project/Img76.jpg" alt="img76">
+        <img src="assets/images/project/Img77.jpg" alt="img77">
+        <img src="assets/images/project/Img78.jpg" alt="img78">
+        <img src="assets/images/project/Img79.jpg" alt="img79">
+        <img src="assets/images/project/Img80.jpg" alt="img80">
+        <img src="assets/images/project/Img81.jpg" alt="img81">
+        <img src="assets/images/project/Img82.jpg" alt="img82">
+        <img src="assets/images/project/Img83.jpg" alt="img83">
+        <img src="assets/images/project/Img84.jpg" alt="img84">
+        <img src="assets/images/project/Img85.jpg" alt="img85">
+        
+    </div>
+
+    <script>
+        const galleryImages = document.querySelectorAll('.masonry-gallery img');
+const lightbox = document.getElementById('split-lightbox');
+const bigImage = document.getElementById('big-image');
+const thumbnailGrid = document.getElementById('thumbnail-grid');
+const closeBtn = document.getElementById('close-btn');
+
+// Create thumbnails for the lightbox side panel
+galleryImages.forEach((img, index) => {
+    let clone = img.cloneNode(true);
+    
+    // When a thumbnail is clicked in the side panel
+    clone.addEventListener('click', () => {
+        bigImage.src = clone.src;
+        updateActiveThumbnail(index);
+    });
+    
+    thumbnailGrid.appendChild(clone);
+});
+
+const thumbnails = document.querySelectorAll('.masonry-gallery-small img');
+
+// Update which thumbnail is highlighted
+function updateActiveThumbnail(activeIndex) {
+    thumbnails.forEach((thumb, index) => {
+        if (index === activeIndex) {
+            thumb.classList.add('active-thumb');
+            // Auto-scroll the side panel to the active thumbnail
+            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            thumb.classList.remove('active-thumb');
+        }
+    });
+}
+
+// Open lightbox when a main gallery image is clicked
+galleryImages.forEach((img, index) => {
+    img.addEventListener('click', () => {
+        bigImage.src = img.src;
+        updateActiveThumbnail(index);
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Stop page scrolling
+    });
+});
+
+// Close lightbox
+closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Restore page scrolling
+});
+    </script>
+    <section class="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>Tha Chanthun's Portfolio</h3>
+            <p>Thank you for visiting my personal portfolio. <br/> <br/> Keep Creating!</p>
+        </div>
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#"><i class="fas fa-chevron-circle-right"></i> Graphic Design</a>
+            <a href="video.html"><i class="fas fa-chevron-circle-right"></i> Video/Graphic Motion</a>
+            <a href="web.html"><i class="fas fa-chevron-circle-right"></i> Website</a>
+            <a href="cg.html"><i class="fas fa-chevron-circle-right"></i> CG.Game</a>
+        </div>
+        <div class="box">
+            <h3>contact info</h3>
+            <p> <i class="fas fa-phone"></i>070 478 470 73</p>
+            <p> <i class="fas fa-envelope"></i>tha.chanthun@gmail.com</p>
+            <p> <i class="fas fa-map-marked-alt"></i>Nishiimagawa Higashisumiyoshi Osaka, Japan</p>
+            <div class="share">
+                <a href="https://www.facebook.com/mynameisthachanthun" class="fab fa-facebook" aria-label="Facebook" target="_blank"></a>
+                <a href="https://www.instagram.com/mrr__thun/" class="fab fa-instagram" aria-label="Instagram" target="_blank"></a>
+                <a href="https://www.threads.net/@mrr__thun" class="fas fa-at" aria-label="Threads" target="_blank"></a>
+                <a href="https://x.com/mrr_thun99" class="fab fa-twitter" aria-label="X (Twitter)" target="_blank"></a>
+                <a href="https://t.me/Mrr_Thun" class="fab fa-telegram-plane" aria-label="Telegram" target="_blank"></a>
+                <a href="https://line.me/ti/p/Ka3a58TD2D" class="fab fa-line" aria-label="Line" target="_blank"></a>
+                <a href="https://www.tiktok.com/@mrr_thun?_r=1&_t=ZS-93krOEqpBAG" class="fab fa-tiktok" aria-label="TikTok" target="_blank"></a>
+                <a href="https://www.behance.net/mrrthun" class="fab fa-behance" aria-label="Behance" target="_blank"></a>
+                <a href="mailto:tha.chanthun@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+    <h1 class="credit">Designed by <a href="#"> Tha Chanthun</a></h1>
+</section>
+
+<a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
+</body>
+</html>

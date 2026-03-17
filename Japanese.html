@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link id='favicon' rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-png">
+    
+    <title>ポートフォリオ | Tha Chanthun</title>
+</head>
+<body oncontextmenu="return false">
+
+<header>
+    <a href="index.html" class="logo"><i class="fas fa-video"></i> Tha Chanthun</a>
+    <div id="menu" class="fas fa-bars"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">ホーム</a></li>
+            <li><a href="#about">自己紹介</a></li>
+            <li><a href="#skills">スキル</a></li>
+            <li><a href="#education">学歴</a></li>
+            <li><a href="#shortcourse-timeline">コース</a></li>
+            <li><a href="#experience">経歴</a></li>
+            <li><a href="#footer">お問い合わせ</a></li>
+            <li><a href="project.html">プロジェクト</a></li>
+        </ul>
+    </nav>
+    <div class="lang">
+    <label>言語:</label>
+    <select name="LN" onchange="location = this.value;">
+      <option value="index.html">English</option>
+      <option value="Japanese.html" selected>Japanese</option>
+      <option value="khmer.html">Khmer</option>
+    </select>
+  </div>
+</header>
+
+<section class="home" id="home">
+    <div id="particles-js"></div>
+    <div class="content">
+        <h2>こんにちは、<br/> <span>ター チャントン</span>です</h2>
+        <p>私は <span class="typing-text"></span> です</p>
+        <a href="#about" class="btn"><span>自己紹介を見る</span>
+            <i class="fas fa-arrow-circle-down"></i>
+        </a>
+        <div class="socials">
+            <ul class="social-icons">
+                <li><a class="facebook" aria-label="Facebook" href="https://www.facebook.com/MrrThun" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                <li><a class="telegram" aria-label="Telegram" href="https://t.me/Mrr_Thun" target="_blank"><i class="fab fa-telegram-plane"></i></a></li>
+                <li><a class="instagram" aria-label="Instagram" href="https://www.instagram.com/mrr__thun/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a class="behance" aria-label="Behance" href="https://www.behance.net/mrrthun" target="_blank"><i class="fab fa-behance"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="image">
+        <img draggable="false" class="tilt" src="./assets/images/hero.jpg" alt="ター チャントン">
+    </div>
+</section>
+
+<section class="about" id="about">
+    <h2 class="heading"><i class="fas fa-user-alt"></i> 自己<span>紹介</span></h2>
+    <div class="row">
+        <div class="image">
+            <img draggable="false" class="tilt" src="./assets/images/profile2.jpg" alt="">
+        </div>
+        <div class="content">
+            <h3>ター チャントンと申します</h3>
+            <span class="tag">ビデオエディター & グラフィックデザイナー</span>
+            <p>カンボジア出身のビデオエディターおよびグラフィックデザイナーです。王立プノンペン大学でITを専攻し、3年間の実践的な映像制作の経験を積みました。
+                <br><br>
+            日本の文化と高度な技術への情熱から来日し、現在は大阪コンピュータ専門学校でCGとゲームデザインを専攻しています。IT分野での論理的な問題解決能力と、国境を越えたクリエイティブな感性を組み合わせています。
+        </p>
+            
+            <div class="box-container">
+                <div class="box">
+                    <p><span> 電話番号 : </span> 070 4784 7073</p>
+                    <p><span> メール : </span> tha.chanthun@gmail.com</p>
+                </div>
+                <div class="box">
+                    <p><span> 対応言語 : </span> クメール語、英語、日本語 (JLPT持ってない)</p>
+                    <p><span> 所在地 : </span> 日本、大阪</p>
+                </div>
+            </div>
+            
+            <div class="resumebtn">
+                <a href="https://drive.google.com/file/d/1Jsu6MmL4L7tX8klVQGTWJIEKmUtnFFwH/view?usp=drive_link" target="_blank" class="btn"><span>履歴書</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="skills" id="skills">
+    <h2 class="heading"><i class="fas fa-laptop-code"></i> <span>スキル</span></h2>
+    <div class="container">
+        <div class="row" id="skillsContainer">
+            <div class="bar">
+                <div class="info">
+                   <a href="video.html"><img src="assets/images/icon/Adobe_Premiere.png" class="skill-icon"></a>
+                    <span>Adobe Premiere</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <a href="project.html"><img src="assets/images/icon/Photoshop.png" class="skill-icon"></a>
+                    <span>Adobe Photoshop</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <a href="project.html"><img src="assets/images/icon/Illustrator.png" class="skill-icon"></a>
+                    <span>Adobe Illustrator</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                   <a href="video.html"><img src="assets/images/icon/After-Effects.png" class="skill-icon"></a>
+                    <span>After Effects</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <a href="cg.html"><img src="assets/images/icon/Autodesk-Maya.png" class="skill-icon"></a>
+                    <span>Autodesk Maya</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="assets/images/icon/Camera.png" class="skill-icon">
+                    <span>カメラ操作</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <img src="assets/images/icon/Office.png" class="skill-icon">
+                    <span>MS Office / ITサポート</span>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                     <a href="web.html"><img src="assets/images/icon/html css.png" class="skill-icon"></a>
+                    <span>Webデザイン / HTML / CSS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="education" id="education"><br><br><br><br>
+    <h1 class="heading"><i class="fas fa-graduation-cap"></i> <span>学歴</span></h1>
+    <p class="qoute">人生は学びの連続です。学ぶことをやめた時、人は成長を止めてしまいます。</p><br><br>
+    <div class="box-container">
+        <div class="box">
+            <div class="image">
+                <a href="https://www.ocsg.ac.jp/" target="_blank" rel="noopener noreferrer"><img draggable="false" src="./assets/images/educat/Senmon.jpg" alt="大阪コンピュータ専門学校">
+                </a>
+            </div>
+            <div class="content">
+                <h3>CG・ゲーム専攻</h3>
+                <p>大阪コンピュータ専門学校 | 日本、大阪</p>
+                <h4>2023 - 現在 | 在学中</h4>
+                <p>現在、大阪コンピュータ専門学校でCGとゲームデザインを学んでいます。3Dモデリング、アニメーション、グラフィックデザイン、Web開発、ゲーム開発などの授業を受けています。Autodesk Maya、Adobe Photoshop、Illustrator、HTML、CSS、Javaなどのソフトウェアやツールに加え、カメラの設定や色彩についても学んでいます。</p>
+            </div>
+            </div>
+        <div class="box">
+                    <div class="image">
+                        <a href="https://hotsuma-group.com/" target="_blank" rel="noopener noreferrer">
+                            <img draggable="false" src="./assets/images/educat/Hotsuma.jpg" alt="ホツマインターナショナルスクール">
+                        </a>
+                    </div>
+            <div class="content">
+                <h3>日本語</h3>
+                <p>ホツマインターナショナルスクール | 日本、大阪</p>
+                <h4>2023 - 2023 | 修了</h4>
+                <p>大阪のホツマインターナショナルスクールで日本語を学び、日本の文化やコミュニケーションスキルについての理解を深めました。このプログラムを通じて、スピーキングとライティングの両方の能力を向上させるとともに、語学の没入体験を得ることができました。</p>
+            </div>
+        </div>
+        <div class="box">
+                <div class="image">
+                    <a href="https://www.rupp.edu.kh/" target="_blank" rel="noopener noreferrer">
+                    <img draggable="false" src="./assets/images/educat/University.jpg" alt="王立プノンペン大学">
+                    </a>
+                </div>
+            <div class="content">
+                <h3>情報技術 (IT)</h3>
+                <p>王立プノンペン大学</p>
+                <h4>2018 - 2022 | 卒業</h4>
+                <p>王立プノンペン大学で情報技術を学び、プログラミングとITサポートに重点を置きました。在学中は、ソフトウェア開発、技術的な問題のトラブルシューティング、さまざまなOSやネットワークの取り扱いなど、実践的な経験を積みました。また、ITの理論的・実践的な基礎と優れた問題解決能力を養うことができました。</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="image">
+                <img draggable="false" src="./assets/images/educat/High.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>高等学校</h3>
+                <p>ラクスメイ・サマキ高等学校</p>
+                <h4>2015 - 2018 | 卒業</h4>
+                <p>評価の高い国立校であるラクスメイ・サマキ高校を卒業しました。在学中は、確固たる学力の基礎を築き、さまざまな課外活動に参加することで、リーダーシップやチームワークのスキルを磨きました。</p>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
+        <section class="shortcourse-timeline" id="shortcourse-timeline">
+            <h1 class="heading"><i class="fas fa-graduation-cap"></i> 短期<span>コース</span></h1>
+            
+            <div class="sc-item">
+                    <div class="image">
+                        <a href="https://www.facebook.com/cgcafe2023" target="_blank" rel="noopener noreferrer">
+                            <img draggable="false" src="./assets/images/Short/After Effect.jpg" alt="After Effect">
+                        </a>
+                    </div>
+                <div class="sc-date">2022年6月 – 2023年1月</div>
+                <div class="sc-content">
+                <h3>ゼロからのAfter Effects</h3>
+                <h4>CG Cafe</h4>
+                <p>アニメーション、VFX、コンポジットなど、After Effectsを深く学びました。</p>
+                </div>
+            </div>
+
+            <div class="sc-item">
+                    <div class="image">
+                        <a href="https://instinct.edu.kh/" target="_blank" rel="noopener noreferrer">
+                            <img draggable="false" src="./assets/images/Short/Web.jpg" alt="Web basic">
+                        </a>
+                    </div>
+                <div class="sc-date">2021年8月 – 2021年10月</div>
+                <div class="sc-content">
+                <h3>Web開発の基礎</h3>
+                <h4>INSTINCT</h4>
+                <p>HTML、CSS、JavaScriptを学習し、レスポンシブWebサイトとUIインタラクションの構築を学びました。</p>
+                </div>
+            </div>
+
+            <div class="sc-item">
+                    <div class="image">
+                        <a href="https://www.facebook.com/pomveasna99" target="_blank" rel="noopener noreferrer">
+                            <img draggable="false" src="./assets/images/Short/3d.png" alt="3D">
+                        </a>
+                    </div>
+                <div class="sc-date">2019年2月 – 2019年8月</div>
+                <div class="sc-content">
+                <h3>3Dアニメーション</h3>
+                <h4>Diamond Media</h4>
+                <p>モーショングラフィックスと3DアニメーションのためのCinema 4Dの基礎を学びました。</p>
+                </div>
+            </div>
+
+            <div class="sc-item">
+                    <div class="image">
+                        <a href="https://www.facebook.com/www.miraicambodia/" target="_blank" rel="noopener noreferrer">
+                            <img draggable="false" src="./assets/images/Short/N5-01.jpg" alt="N5">
+                        </a>
+                    </div>
+                <div class="sc-date">2018年5月 – 2019年5月</div>
+                <div class="sc-content">
+                <h3>日本語</h3>
+                <h4>Mirai Japanese Language School</h4>
+                <p>日本での学習や就労に向けた日本語のトレーニングを受けました。</p>
+                </div>
+            </div>
+
+            <div class="sc-item">
+                    <div class="image">
+                        <a href="https://www.facebook.com/PlayMediaclube" target="_blank" rel="noopener noreferrer">
+                            <img draggable="false" src="./assets/images/Short/Media.png" alt="Media">
+                        </a>
+                    </div>
+                <div class="sc-date">2018年8月 – 2019年5月</div>
+                <div class="sc-content">
+                <h3>映像制作、デザイン、サウンド</h3>
+                <h4>Play Media Club</h4>
+                <p>Adobe Photoshop、Illustrator、After Effects、Premiere、Auditionを使用した映像のポストプロダクション、クリエイティブデザイン、音声編集を学びました。</p>
+                </div>
+            </div>
+
+            <div class="sc-item">
+                    <div class="image">
+                        <a href="https://www.facebook.com/kroitchetlaor" target="_blank" rel="noopener noreferrer">
+                            <img draggable="false" src="./assets/images/Short/C.jpg" alt="C">
+                        </a>
+                    </div>
+                <div class="sc-date">2018年11月 – 2019年5月</div>
+                <div class="sc-content">
+                <h3>C/C++ プログラミング</h3>
+                <h4>E-Tech</h4>
+                <p>コーディングスキルと問題解決能力を高めるため、C言語およびC++プログラミング言語を学習しました。</p>
+                </div>
+            </div>
+
+            <div class="sc-item">
+                    <div class="image">
+                        <a href="https://ohf.org.sg/gallery/cambodia-children-gallery/" target="_blank" rel="noopener noreferrer">
+                            <img draggable="false" src="./assets/images/Short/Hope.jpg" alt="Hope">
+                        </a>
+                    </div>
+                <div class="sc-date">2016年8月 – 2016年10月</div>
+                <div class="sc-content">
+                <h3>Ms.Office、英語、姿勢</h3>
+                <h4>Hope Training Center</h4>
+                <p>英語のスキルを向上させながら、Microsoft Officeツール（Excel、Word、PowerPoint）の使用方法を学びました。</p>
+                </div>
+            </div>
+
+        </section>
+
+
+<section class="experience" id="experience"><br>
+    <h2 class="heading"><i class="fas fa-briefcase"></i> <span>職歴 </span> </h2>
+    <p class="qoute">できるだけ多くの新しいことを経験する。</p><br><br><br>
+    <div class="timeline">
+        <div class="container right">
+            <div class="content">
+                <div class="tag">
+                    <h2>あきんどスシロー (大阪)</h2>
+                </div>
+                <div class="desc">
+                    <h3>キッチンスタッフ</h3>
+                    <p>2023 - 現在</p>
+                    <p>来日後、新しい国での生活に適応しながら日々の生活費を支えるため、スシローで働き始めました。この経験は、日本の労働文化に対する理解を深め、語学力を向上させるのに役立っています。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <div class="tag">
+                    <h2>Mirai Japanese Language School</h2>
+                </div>
+                <div class="desc">
+                    <h3>メディアサポート</h3>
+                    <p>2022 - 2023</p>
+                    <p>KSH Onlineで2年間働いた後、Mirai Japanese Language Schoolへ移り、教師のサポート業務を行いながら日本への留学準備を進めました。日本の文化を学び、体験したいという情熱に突き動かされ、留学の申請を行い、夢を実現するためのプロセスを開始しました。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <div class="tag">
+                    <h2>KSH Online</h2>
+                </div>
+                <div class="desc">
+                    <h3>ビデオエディター</h3>
+                    <p>2020 - 2022</p>
+                    <p>その後、KSH Onlineに移り、モーショングラフィックスデザイナー兼ビデオエディターとして勤務しました。この役割では、ダイナミックなモーショングラフィックスの作成やさまざまなプロジェクトの動画編集に注力し、ビジュアルストーリーテリングのスキルをさらに磨きました。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <div class="tag">
+                    <h2>Mirai Japanese Language School</h2>
+                </div>
+                <div class="desc">
+                    <h3>CGデザイナー</h3>
+                    <p>2018 - 2020</p>
+                    <p>在職中はグラフィックデザイナーとして働き、実際のプロジェクトにスキルを応用することができました。これにより知識をさらに深め、継続的に技術を向上させることができました。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <div class="tag">
+                    <h2>TCT Training Center</h2>
+                </div>
+                <div class="desc">
+                    <h3>講師</h3>
+                    <p>2017 - 2018</p>
+                    <p>講師としても働き、英語や、Microsoft Office、タイピングスキルなどのコンピュータースキルを指導しました。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer" id="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>ター チャントンのポートフォリオ</h3>
+            <p>私の個人ポートフォリオをご覧いただき、ありがとうございます。</p>
+        </div>
+        <div class="box">
+            <h3>クイックリンク</h3>
+            <a href="#home"><i class="fas fa-chevron-circle-right"></i> ホーム</a>
+            <a href="#about"><i class="fas fa-chevron-circle-right"></i> 自己紹介</a>
+            <a href="#skills"><i class="fas fa-chevron-circle-right"></i> スキル</a>
+            <a href="#education"><i class="fas fa-chevron-circle-right"></i> 学歴</a>
+            <a href="#shortcourse-timeline"><i class="fas fa-chevron-circle-right"></i> 短期コース</a>
+            <a href="#experience"><i class="fas fa-chevron-circle-right"></i> 職歴</a>
+            <a href="project.html"><i class="fas fa-chevron-circle-right"></i> プロジェクト</a>
+        </div>
+        <div class="box">
+            <h3>連絡先</h3>
+            <p> <i class="fas fa-phone"></i>070 4784 7073</p>
+            <p> <i class="fas fa-envelope"></i>tha.chanthun@gmail.com</p>
+            <p> <i class="fas fa-map-marked-alt"></i>日本、大阪府大阪市東住吉区西今川</p>
+            <div class="share">
+                <a href="https://www.facebook.com/mynameisthachanthun" class="fab fa-facebook" aria-label="Facebook" target="_blank"></a>
+                <a href="https://www.instagram.com/mrr__thun/" class="fab fa-instagram" aria-label="Instagram" target="_blank"></a>
+                <a href="https://www.threads.net/@mrr__thun" class="fas fa-at" aria-label="Threads" target="_blank"></a>
+                <a href="https://x.com/mrr_thun99" class="fab fa-twitter" aria-label="X (Twitter)" target="_blank"></a>
+                <a href="https://t.me/Mrr_Thun" class="fab fa-telegram-plane" aria-label="Telegram" target="_blank"></a>
+                <a href="https://line.me/ti/p/Ka3a58TD2D" class="fab fa-line" aria-label="Line" target="_blank"></a>
+                <a href="https://www.tiktok.com/@mrr_thun?_r=1&_t=ZS-93krOEqpBAG" class="fab fa-tiktok" aria-label="TikTok" target="_blank"></a>
+                <a href="https://www.behance.net/mrrthun" class="fab fa-behance" aria-label="Behance" target="_blank"></a>
+                <a href="mailto:tha.chanthun@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+    <h1 class="credit">Designed by <a href="#"> Tha Chanthun</a></h1>
+</section>
+
+<a href="#home" aria-label="ScrollTop" class="fas fa-angle-up" id="scroll-top"></a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+<script>
+  $(document).ready(function() {
+      // Typing animation
+      var typed = new Typed(".typing-text", {
+          strings: ["ビデオエディター", "グラフィックデザイナー", "モーションデザイナー", "フォトグラファー"],
+          loop: true,
+          typeSpeed: 50,
+          backSpeed: 25,
+          backDelay: 500,
+      });
+
+      // Mobile Menu Toggle
+      $('#menu').click(function(){
+          $(this).toggleClass('fa-times');
+          $('.navbar').toggleClass('nav-toggle');
+      });
+
+      // Close menu on scroll or click
+      $(window).on('scroll load', function(){
+          $('#menu').removeClass('fa-times');
+          $('.navbar').removeClass('nav-toggle');
+      });
+  });
+</script>
+
+</body>
+</html>
